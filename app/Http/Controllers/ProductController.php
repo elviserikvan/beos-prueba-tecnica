@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Resources\ProductResource;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -11,21 +14,17 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return response()->json([
-            'products' => [
-            ['id' => 1, 'name' => 'Product A', 'price' => 100],
-            ['id' => 2, 'name' => 'Product B', 'price' => 150],
-            ['id' => 3, 'name' => 'Product C', 'price' => 200],
-            ]
-        ]);
+        $products = Product::all();
+        return ProductResource::collection($products);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        //
+        $product = Product::create($request->validated());
+        return new ProductResource($product);
     }
 
     /**
