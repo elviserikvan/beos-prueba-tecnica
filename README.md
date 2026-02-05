@@ -1,25 +1,19 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="https://github.com/gamertod.png" alt="Profile" width="120" style="border-radius:50%" />
 </p>
 
-## About Laravel
+<p align="center">
+  <img src="https://img.shields.io/badge/Laravel-12-FF2D20?logo=laravel&logoColor=white" alt="Laravel" />
+  <img src="https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white" alt="PHP" />
+  <img src="https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white" alt="Docker" />
+  <img src="https://img.shields.io/badge/Sail-Enabled-0EA5E9?logo=laravel&logoColor=white" alt="Laravel Sail" />
+  <img src="https://img.shields.io/badge/MySQL-DB-4479A1?logo=mysql&logoColor=white" alt="MySQL" />
+  <img src="https://img.shields.io/badge/Testing-PHPUnit-6E9F18?logo=php&logoColor=white" alt="PHPUnit" />
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# Prueba Backend — Productos y Divisas
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+API RESTful en Laravel para gestionar productos, divisas y precios por divisa.
 
 ## Setup con Laravel Sail
 
@@ -66,3 +60,23 @@ php artisan key:generate
 ```bash
 ./vendor/bin/sail build --no-cache
 ```
+
+## Endpoints Principales
+
+- GET /products — Listar productos
+- POST /products — Crear producto
+- GET /products/{product} — Ver producto
+- PUT /products/{product} — Actualizar producto
+- DELETE /products/{product} — Eliminar producto
+- GET /products/{product}/prices — Listar precios por divisa
+- POST /products/{product}/prices — Crear precio para una divisa
+
+## Highlights
+
+- Docker + Laravel Sail para entorno reproducible.
+- Validaciones con FormRequests (Store/Update/ProductPrice).
+- Serialización limpia con API Resources (Product/Currency/ProductPrice).
+- Eloquent Models y relaciones (`Product`, `Currency`, `ProductPrice`).
+- Migraciones con claves foráneas y `cascadeOnDelete` en precios.
+- Seeders y Factories para datos de ejemplo (productos, divisas, precios).
+- Route Model Binding en rutas REST.
