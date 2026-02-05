@@ -1,0 +1,285 @@
+{
+	"info": {
+		"_postman_id": "2b5af155-7048-464c-923d-7f44a89bfa4e",
+		"name": "Beos Prueba Tecnica",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49145295",
+		"_collection_link": "https://blue-space-497275.postman.co/workspace/Team-Workspace~02352b09-1362-4a44-8de4-3fbc6bd7830e/collection/49145295-2b5af155-7048-464c-923d-7f44a89bfa4e?action=share&source=collection_link&creator=49145295"
+	},
+	"item": [
+		{
+			"name": "Precio de productos",
+			"item": [
+				{
+					"name": "Create price",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"price\": 123,\n \"currency_id\": 1   \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/products/:productId/prices",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"products",
+								":productId",
+								"prices"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create price Copy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/products/:productId/prices",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"products",
+								":productId",
+								"prices"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "Delete product",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/products/:productId",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"products",
+								":productId"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/products",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get single product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/products/:productId",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"products",
+								":productId"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Producto {{$randomInt}} EDITADO\"\n  //\"description\": \"{{$randomLoremSentence}}\",\n  //\"price\": \"{{$randomInt}}.00\",\n // \"currency_id\": 2\n  //\"tax_cost\": \"{{$randomInt}}.00\",\n  //\"manufacturing_cost\": \"{{$randomInt}}.00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/products/:productId",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"products",
+								":productId"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Producto {{$randomInt}}\",\n  \"description\": \"{{$randomLoremSentence}}\",\n  \"price\": \"{{$randomInt}}.00\",\n  \"currency_id\": 1,\n  \"tax_cost\": \"{{$randomInt}}.00\",\n  \"manufacturing_cost\": \"{{$randomInt}}.00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/products",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost",
+			"type": "string"
+		}
+	]
+}

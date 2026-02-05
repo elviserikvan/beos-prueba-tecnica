@@ -80,3 +80,8 @@ php artisan key:generate
 - Migraciones con claves foráneas y `cascadeOnDelete` en precios.
 - Seeders y Factories para datos de ejemplo (productos, divisas, precios).
 - Route Model Binding en rutas REST.
+
+## Colección de Postman
+
+- En la carpeta [postman_collection](postman_collection) está la colección para probar los endpoints:
+  - [Beos Prueba Tecnica.postman_collection.json](postman_collection/Beos%20Prueba%20Tecnica.postman_collection.json)
