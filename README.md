@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/gamertod.png" alt="Profile" width="120" style="border-radius:50%" />
+  <img src="https://avatars.githubusercontent.com/u/27452555?v=4" alt="Profile" width="120" style="border-radius:50%" />
 </p>
 
 <p align="center">
