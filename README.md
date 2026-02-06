@@ -40,7 +40,6 @@ docker run --rm --interactive --tty \
 
 ```bash
 cp .env.example .env
-php artisan key:generate
 ```
 
 4. Levantar los servicios con Sail (MySQL por defecto)
@@ -48,6 +47,7 @@ php artisan key:generate
 ```bash
 ./vendor/bin/sail up -d
 ```
+
 
 5. Ejecutar migraciones y seeders
 
