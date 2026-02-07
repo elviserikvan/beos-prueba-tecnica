@@ -48,6 +48,13 @@ cp .env.example .env
 ./vendor/bin/sail up -d
 ```
 
+Esperar a que la base de datos termine de iniciar.
+```bash
+./vendor/bin/sail ps
+```
+
+Aqui tenemos que ver el estado de los contendores y esperar a que el servicio `mysql` tenga el status `healthy` antes de continuar
+
 
 5. Ejecutar migraciones y seeders
 
