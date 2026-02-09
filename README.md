@@ -8,7 +8,6 @@
   <img src="https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white" alt="Docker" />
   <img src="https://img.shields.io/badge/Sail-Enabled-0EA5E9?logo=laravel&logoColor=white" alt="Laravel Sail" />
   <img src="https://img.shields.io/badge/MySQL-DB-4479A1?logo=mysql&logoColor=white" alt="MySQL" />
-  <img src="https://img.shields.io/badge/Testing-PHPUnit-6E9F18?logo=php&logoColor=white" alt="PHPUnit" />
 </p>
 
 # Prueba Backend — Productos y Divisas
