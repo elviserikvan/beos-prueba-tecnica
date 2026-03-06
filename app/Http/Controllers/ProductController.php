@@ -2,81 +2,52 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProductPriceRequest;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
-use App\Http\Requests\StoreProductPriceRequest;
 use App\Http\Resources\ProductPriceResource;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
-use App\Models\ProductPrice;
-use Illuminate\Http\Request;
+use App\Services\ProductService;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function __construct(private readonly ProductService $productService) {}
+
     public function index()
     {
-        $products = Product::all();
-        return ProductResource::collection($products);
+        return ProductResource::collection($this->productService->getAll());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreProductRequest $request)
     {
-        $product = Product::create($request->validated());
-        return new ProductResource($product);
+        return new ProductResource($this->productService->create($request->validated()));
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Product $product)
     {
-        $product->load(['productPrices']);
-        return new ProductResource($product);
+        return new ProductResource($this->productService->getWithPrices($product));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        $product->update($request->validated());
-        return new ProductResource($product);
+        return new ProductResource($this->productService->update($product, $request->validated()));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Product $product)
     {
-        $product->delete();
+        $this->productService->delete($product);
+
         return response()->json(['message' => 'Product deleted']);
     }
 
-    /**
-     * List product prices for a product.
-     */
     public function prices(Product $product)
     {
-        return ProductPriceResource::collection($product->productPrices);
+        return ProductPriceResource::collection($this->productService->getPrices($product));
     }
 
-    /**
-     * Create a new price for a product.
-     */
     public function storePrice(StoreProductPriceRequest $request, Product $product)
     {
-        $price = ProductPrice::create([
-            'product_id' => $product->id,
-            'currency_id' => $request->currency_id,
-            'price' => $request->price,
-        ]);
-
-        return new ProductPriceResource($price);
+        return new ProductPriceResource($this->productService->createPrice($product, $request->validated()));
     }
 }
