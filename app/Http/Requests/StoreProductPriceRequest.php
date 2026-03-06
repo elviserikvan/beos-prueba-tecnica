@@ -26,3 +26,4 @@ class StoreProductPriceRequest extends FormRequest
             'price' => ['required', 'numeric', 'decimal:0,2', 'min:0'],
         ];
     }
+}
