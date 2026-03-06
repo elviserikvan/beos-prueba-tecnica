@@ -22,7 +22,9 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
-        return new ProductResource($this->productService->create($request->validated()));
+        return (new ProductResource($this->productService->create($request->validated())))
+            ->response()
+            ->setStatusCode(201);
     }
 
     public function show(Product $product)
@@ -39,7 +41,7 @@ class ProductController extends Controller
     {
         $this->productService->delete($product);
 
-        return response()->json(['message' => 'Product deleted']);
+        return response()->noContent();
     }
 
     public function prices(Request $request, Product $product)
@@ -49,6 +51,8 @@ class ProductController extends Controller
 
     public function storePrice(StoreProductPriceRequest $request, Product $product)
     {
-        return new ProductPriceResource($this->productService->createPrice($product, $request->validated()));
+        return (new ProductPriceResource($this->productService->createPrice($product, $request->validated())))
+            ->response()
+            ->setStatusCode(201);
     }
 }
