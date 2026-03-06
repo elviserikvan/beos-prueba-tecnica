@@ -11,7 +11,7 @@ class ProductService
 {
     public function getAll(int $perPage = 15): LengthAwarePaginator
     {
-        return Product::paginate($perPage);
+        return Product::with('currency')->paginate($perPage);
     }
 
     public function create(array $data): Product
@@ -40,7 +40,7 @@ class ProductService
 
     public function getPrices(Product $product, int $perPage = 15): LengthAwarePaginator
     {
-        return $product->productPrices()->paginate($perPage);
+        return $product->productPrices()->with('currency')->paginate($perPage);
     }
 
     public function createPrice(Product $product, array $data): ProductPrice
