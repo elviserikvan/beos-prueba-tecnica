@@ -4,13 +4,14 @@ namespace App\Services;
 
 use App\Models\Product;
 use App\Models\ProductPrice;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 
 class ProductService
 {
-    public function getAll(): Collection
+    public function getAll(int $perPage = 15): LengthAwarePaginator
     {
-        return Product::all();
+        return Product::paginate($perPage);
     }
 
     public function create(array $data): Product
@@ -37,9 +38,9 @@ class ProductService
         $product->delete();
     }
 
-    public function getPrices(Product $product): Collection
+    public function getPrices(Product $product, int $perPage = 15): LengthAwarePaginator
     {
-        return $product->productPrices;
+        return $product->productPrices()->paginate($perPage);
     }
 
     public function createPrice(Product $product, array $data): ProductPrice

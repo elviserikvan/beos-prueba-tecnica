@@ -9,14 +9,15 @@ use App\Http\Resources\ProductPriceResource;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use App\Services\ProductService;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     public function __construct(private readonly ProductService $productService) {}
 
-    public function index()
+    public function index(Request $request)
     {
-        return ProductResource::collection($this->productService->getAll());
+        return ProductResource::collection($this->productService->getAll($request->integer('per_page', 15)));
     }
 
     public function store(StoreProductRequest $request)
@@ -41,9 +42,9 @@ class ProductController extends Controller
         return response()->json(['message' => 'Product deleted']);
     }
 
-    public function prices(Product $product)
+    public function prices(Request $request, Product $product)
     {
-        return ProductPriceResource::collection($this->productService->getPrices($product));
+        return ProductPriceResource::collection($this->productService->getPrices($product, $request->integer('per_page', 15)));
     }
 
     public function storePrice(StoreProductPriceRequest $request, Product $product)
